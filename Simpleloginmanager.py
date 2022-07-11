@@ -70,7 +70,23 @@ def verify_login():
                 else:
                     print("Login fail")
             except KeyError:
-                print("Username does not exits")
+                Olddata = chekifoldfileexists()
+                user_responce = input(
+                    "Username does not exits\n\nDo you want to create a new user\n\nPress Y to create New User or any other key to exit\n\n"
+                )
+
+                if user_responce.capitalize() == "Y":
+
+                    Username, Password = Register_User(Olddata)
+
+                    Encrptedpass = Encrpyt_pwd(Password)
+
+                    updated_data = adding_data_to_dic(Olddata, Username, Encrptedpass)
+
+                    addind_data_to_json(updated_data)
+                    print("User added succussfully - Rerun Login to try again")
+                else:
+                    sys.exit()
     except FileNotFoundError as e:
         Olddata = chekifoldfileexists()
         user_responce = input(
@@ -87,6 +103,7 @@ def verify_login():
 
             addind_data_to_json(updated_data)
 
+            print("User added succussfully - Rerun Login to try again")
         else:
             sys.exit()
 
@@ -94,16 +111,16 @@ def verify_login():
 if __name__ == "__main__":
 
     Olddata = chekifoldfileexists()
-    # print("Current json data is as below \n\n", Olddata)
+    print("Current json data is as below \n\n", Olddata)
 
     verify_login()
 
-    Username, Password = Register_User(Olddata)
+    # Username, Password = Register_User(Olddata)
 
-    # print(Username, Password)
+    # # print(Username, Password)
 
-    Encrptedpass = Encrpyt_pwd(Password)
+    # Encrptedpass = Encrpyt_pwd(Password)
 
-    updated_data = adding_data_to_dic(Olddata, Username, Encrptedpass)
+    # updated_data = adding_data_to_dic(Olddata, Username, Encrptedpass)
 
-    addind_data_to_json(updated_data)
+    # addind_data_to_json(updated_data)
