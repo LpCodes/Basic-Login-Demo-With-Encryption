@@ -17,7 +17,7 @@ This is a simple user authentication system implemented in Python. It allows use
 
 ## Usage
 
-1. Clone the repository or download the Python script (`user_authentication.py`) to your local machine.
+1. Clone the repository or download the Python script (`Simpleloginmanager.py`) to your local machine.
 
 2. Open a terminal or command prompt and navigate to the directory containing the script.
 
