@@ -1,6 +1,6 @@
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
 import cryptocode
 
 DATA_FILE = "cd.json"
@@ -8,24 +8,23 @@ ENCRYPTION_KEY = "123"
 
 def check_or_create_data_file():
     """Check if the data file exists; if not, create it."""
-    cur_dir = Path.cwd()
-    file = cur_dir / DATA_FILE
+    data_file_path = Path(DATA_FILE)
 
-    if file.exists():
-        print("OLD Json Data file already exists")
-        return load_data_from_file(file)
+    if data_file_path.exists():
+        print("Old JSON Data file already exists")
+        return load_data_from_file(data_file_path)
     else:
         print("Creating a new JSON data file as old data was not present")
         return {}
 
-def load_data_from_file(file):
+def load_data_from_file(file_path):
     """Load data from the given JSON file."""
-    with open(file, "r") as json_file:
+    with open(file_path, "r") as json_file:
         return json.load(json_file)
 
-def save_data_to_file(data, file):
+def save_data_to_file(data, file_path):
     """Save data to the given JSON file."""
-    with open(file, "w") as json_file:
+    with open(file_path, "w") as json_file:
         json.dump(data, json_file, indent=4, sort_keys=True)
 
 def register_user(data):
